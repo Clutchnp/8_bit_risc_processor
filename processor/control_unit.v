@@ -24,6 +24,7 @@ module control_unit (
         branch_eq   = 1'b0; //dont unserstand how will branching work regarding to jump instructions tbh
         branch_ne   = 1'b0;
         jump        = 1'b0;
+        halt        = 1'b0;
 
         case (opcode)
 
@@ -101,8 +102,8 @@ module control_unit (
                 alu_control = 4'b0100;
             end
 
-            default: begin 
-                //rest are reserved for now
+            default: begin
+              halt = 1;
             end
 
         endcase

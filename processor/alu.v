@@ -6,7 +6,7 @@ module alu (
     output reg  [7:0] result,
     output wire       zero
 );
-
+    
     always @(*) begin
         case (op)
             3'b0000: result = a + b;

@@ -38,12 +38,8 @@ module control_unit (
                 alu_control = 4'b0000; // ADD
             end
 
-            4'b0010: begin // LDI // I dont think we actually need it because I will be hardwiring r0 to 0 so we this can be done by just ADDI
-                reg_write  = 1'b1;
-                result_src = 2'b10;
-            end
 
-            4'b0011: begin // LD
+            4'b0010: begin // LD
                 reg_write   = 1'b1;
                 alu_src     = 1'b1;
                 mem_read    = 1'b1;
@@ -51,51 +47,51 @@ module control_unit (
                 alu_control = 4'b0000; // ADD address + offset
             end
 
-            4'b0100: begin // ST
+            4'b0011: begin // ST
                 alu_src     = 1'b1;
                 mem_write   = 1'b1;
                 alu_control = 4'b0000; // ADD address + offset
             end
 
-            4'b0101: begin // BEQ
+            4'b0100: begin // BEQ
                 branch_eq   = 1'b1;
                 alu_control = 4'b0001; // SUB for comparison
             end
 
-            4'b0110: begin // BNE
+            4'b0101: begin // BNE
                 branch_ne   = 1'b1;
                 alu_control = 4'b0001; // SUB for comparison
             end
 
-            4'b0111: begin // JMP
+            4'b0110: begin // JMP
                 jump = 1'b1;
             end
 
-            4'b1000: begin // SHLI
+            4'b0111: begin // SHLI
                 reg_write   = 1'b1;
                 alu_src     = 1'b1;
                 alu_control = 4'b1000;
             end
 
-            4'b1001: begin // SHRI
+            4'b1000: begin // SHRI
                 reg_write   = 1'b1;
                 alu_src     = 1'b1;
                 alu_control = 4'b1001;
             end
 
-            4'b1010: begin // ANDI
+            4'b1001: begin // ANDI
                 reg_write   = 1'b1;
                 alu_src     = 1'b1;
                 alu_control = 4'b0010;
             end
 
-            4'b1011: begin // ORI
+            4'b1010: begin // ORI
                 reg_write   = 1'b1;
                 alu_src     = 1'b1;
                 alu_control = 4'b0011;
             end
 
-            4'b1100: begin // XORI
+            4'b1011: begin // XORI
                 reg_write   = 1'b1;
                 alu_src     = 1'b1;
                 alu_control = 4'b0100;
